@@ -19,7 +19,7 @@ vpath %.c src
 MKDIR    := mkdir -p
 RM       := rm -f
 
-OBJS     := $(patsubst %.o,%.c,$(notdir $(wildcard src/*.c)))
+OBJS     := $(patsubst %.c,%.o,$(notdir $(wildcard src/*.c)))
 
 CC       := gcc
 CFLAGS   := -std=c17 -Wall -Wextra -Werror -Wpedantic -g -Og

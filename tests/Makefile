@@ -1,5 +1,6 @@
 
 vpath %.c src
+vpath %.o ../
 
 MKDIR    := mkdir -p
 RM       := rm -f
@@ -10,6 +11,8 @@ CPPFLAGS := -I ../include -I include -D_GNU_SOURCE -D_POSIX_SOURCE
 LDFLAGS  := 
 LIBS     := -lcunit
 
+DEPS     := str.o
+
 TESTS := test-cmdline-args-length
 
 all: tests
@@ -17,7 +20,7 @@ all: tests
 tests: $(TESTS)
 	./test-cmdline-args-length
 
-test-cmdline-args-length: test-cmdline-args-length.o
+test-cmdline-args-length: $(DEPS) test-cmdline-args-length.o
 	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o $@ $^ $(LIBS)
 
 %.o: %.c
