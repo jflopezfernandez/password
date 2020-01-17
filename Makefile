@@ -37,6 +37,13 @@ $(TARGET): $(OBJS)
 %.o: %.c
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $^
 
+check: $(TARGET)
+	$(MAKE) -C tests tests
+
 .PHONY: clean
-clean:
+clean: clean-tests
 	$(RM) $(OBJS) $(TARGET)
+
+.PHONY: clean-tests
+clean-tests:
+	$(MAKE) -C tests clean

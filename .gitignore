@@ -55,3 +55,5 @@ dkms.conf
 # Project Executables
 password
 
+# Project Test Executables
+test-cmdline-args-length
